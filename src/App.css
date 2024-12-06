@@ -3,7 +3,8 @@
   flex-direction: column;
   min-height: 100vh;
 }
-h2{
+
+h2 {
   font-size: 20px;
 }
 
@@ -12,7 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color:  #d0e0eb;
+  background-color: #d0e0eb;
   height: 100px;
 }
 
@@ -43,6 +44,7 @@ header nav {
   display: flex;
   justify-content: end;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .text-nav p {
@@ -68,6 +70,10 @@ header nav a {
   font-size: 18px;
 }
 
+.logout-icon {
+  display: none;
+}
+
 
 /* Main Section */
 main {
@@ -81,11 +87,13 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-blend-mode:overlay
+  background-blend-mode: overlay
 }
-.hero p, .hero h1{
+
+.hero p, .hero h1 {
   width: 40%;
 }
+
 .hero button {
   background-color: #17a2b8;
   color: #fff;
@@ -128,17 +136,19 @@ main {
   border-radius: 8px;
   justify-content: center;
   color: white;
+  align-items: center;
 }
 
 .card p {
-  font-size: 1.2rem;
+  height: 20px;
+  font-size: 18px;
   background-color: rgba(18, 29, 110, 0.7);
   padding: 5px;
   backdrop-filter: blur(5px);
   border-radius: 5px;
-  
 }
-.next-images{
+
+.next-images {
   display: flex;
   justify-content: space-around;
 }
@@ -165,6 +175,7 @@ main {
   padding: 5px;
   cursor: pointer;
 }
+
 .collection-img.active {
   background-color: #0a7405;
   color: white;
@@ -190,17 +201,22 @@ main {
 .card-notice h3 {
   margin: 0;
 }
-.description-notice{
+
+.description-notice {
   flex: 1;
 }
-.description-notice p{
+
+.description-notice p {
   overflow-wrap: break-word;
 }
 
 .img-notice {
   width: 20%;
+  max-width: 100%;
   background-color: #07978b;
   border-radius: 10px;
+  object-fit: cover;
+  height: auto;
 }
 
 .description-notice {
@@ -220,54 +236,59 @@ main {
   padding: 3rem;
   text-align: center;
 }
-.feature h2, .feature p{
-  width: 60%;
-   text-align: start;
-}
-.feature p{
-  font-size: 18px;
- 
 
+.feature h2,
+.feature p {
+  width: 60%;
+  text-align: start;
 }
+
+.feature p {
+  font-size: 18px;
+}
+
 .feature-image {
+  display: flex;
   flex: 1;
   background-color: #07978b;
   color: #fff;
-
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
-.imgDeportista{
+
+.imgDeportista {
   width: 100%;
   height: auto;
 }
 
 /* statistics Section */
-.statistics-section { 
+.statistics-section {
   display: flex;
   flex: 1;
   background-color: #d0e0eb;
   flex-direction: column;
   padding-bottom: 4rem;
 }
-.statistics-section h2{
+
+.statistics-section h2 {
   text-align: center;
   padding: 3rem 0rem;
 }
 
-.tables{
+.tables {
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1;
   gap: 40px;
   padding: 1rem 0rem;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 
 .table-block {
   width: 100%;
-  max-width: 400px; 
+  max-width: 400px;
   background-color: #1c2b39;
   color: white;
   padding: 20px;
@@ -289,7 +310,7 @@ main {
 .table-block td {
   padding: 6px 2px;
   text-align: center;
-  word-break: break-word; 
+  word-break: break-word;
   border: 1px solid #1c2b39;
 }
 
@@ -308,7 +329,7 @@ main {
 }
 
 .table-block.highlighted {
-  max-width: 370px; 
+  max-width: 370px;
   transform: scale(1.1);
   z-index: 1;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
@@ -322,7 +343,7 @@ aside {
   color: #fff;
   text-align: center;
   padding: 1rem;
- justify-content: center;
+  justify-content: center;
 }
 
 .footer-links {
@@ -331,21 +352,218 @@ aside {
   justify-content: center;
   align-items: center;
 }
-.social-networks{
+
+.social-networks {
   display: flex;
   gap: 15px;
   margin-bottom: 2rem;
 }
-.logos-net{
+
+.logos-net {
   width: 45px;
 }
 
-.cont-terms{
+.cont-terms {
   display: flex;
   gap: 20px;
-  
+
 }
-.cont-terms a{
+
+.cont-terms a {
   color: #6ABC66;
   text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .img-notice {
+    width: 30%;
+  }
+
+  .feature h2,
+  .feature p {
+    width: 80%;
+  }
+
+
+}
+
+@media (max-width: 920px) {
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    height: 180px;
+
+  }
+
+  header .logo {
+    margin-left: 0px;
+    margin-top: 1rem;
+  }
+
+  header nav {
+    margin-right: 0px;
+    justify-content: space-around;
+  }
+
+  .text-nav {
+    justify-content: center;
+  }
+
+  .hero button {
+    font-size: 16px;
+  }
+  .logos-net {
+    width: 35px;
+  }
+}
+
+@media (max-width: 675px) {
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  .a-logout {
+    display: none;
+  }
+
+  .logout-icon {
+    display: block;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  .deports-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .deports {
+    width: 80%;
+  }
+
+
+  .notices {
+    width: 80%;
+  }
+
+  .deports-section {
+    gap: 1rem;
+  }
+
+  .card p {
+    font-size: 16px;
+  }
+
+  .collection-img {
+    font-size: 12px;
+    width: 20px;
+  }
+
+  .feature-section{
+    flex-direction: column;
+  }
+  .feature p {
+    font-size: 16px;
+  }
+
+
+}
+
+@media (max-width: 550px) {
+  h1 {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  .text-nav {
+    font-size: 12px;
+    
+  }
+
+  header nav a {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 10px 10px;
+    align-self: center;
+  }
+  .hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 3rem;
+  }
+  .hero p, .hero h1 {
+    width: 100%;
+    margin: 10px;
+  }
+  .hero button {
+    font-size: 14px;
+  }
+
+  .collection-img {
+    display: none;
+  }
+
+  .card p {
+    font-size: 14px;
+  }
+
+  .notices {
+    font-size: 14px;
+  }
+  .feature{
+    max-width: 340px;
+    padding: 2rem;
+  }
+
+  .feature p {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .table-block {
+    width: 90%;
+    max-width: 320px;
+    font-size: 12px;
+  }
+
+  .table-block.highlighted {
+    max-width: 300px;
+    font-size: 12px;
+  }
+  aside{
+    font-size: 12px;
+  }
+  .logos-net {
+    width: 30px;
+  }
+
+}
+
+@media (max-width: 400px) {
+  .table-block {
+    padding: 10px;
+    max-width: 250px;
+    font-size: 12px;
+  }
+
+  .table-block.highlighted {
+    max-width: 250px;
+    font-size: 12px;
+  }
+
 }
