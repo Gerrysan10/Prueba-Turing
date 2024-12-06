@@ -16,15 +16,19 @@ function App() {
   const [sports, setSports] = useState([]);
   const [notices, setNotices] = useState([]);
   const [rankings, setRankings] = useState([]);
+  const [nameUser, setUserName] = useState('')
 
   useEffect(() => {
     // Función para cargar datos
     const fetchData = async () => {
       try {
+        const storedUser = localStorage.getItem('userSession');
+        const userName = storedUser ? JSON.parse(storedUser).username : null;
+        console.log('estos son los datos:',storedUser)
+        setUserName(userName);
         // Obtener datos de deportes
         const sportsData = await getSports();
         setSports(sportsData);
-        console.log('deportes', sportsData)
 
         // Obtener datos de noticias
         const noticesData = await getNotices();
@@ -61,7 +65,7 @@ function App() {
         </div>
         <nav>
           <div className="text-nav">
-            <p>Bienvenido Gerardo</p>
+            <p>Bienvenido {nameUser}</p>
           </div>
           <div className="nav-item">
             <a href="#Noticias">Noticias</a>

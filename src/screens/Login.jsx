@@ -10,11 +10,6 @@ function Login() {
     const [selectLogin,setselectLogin] = useState(true);
     const [message, setMessage] = useState('');
     
-
-    const onSubmit = async (data) => {
-
-    };
-
     return (
         <>
             <div className='ContRegister'>
@@ -25,9 +20,9 @@ function Login() {
                     </div>
                     {
                         selectLogin ? 
-                        <FormLogin/>
+                        <FormLogin setMessage={setMessage} visibleModal={setShowModal}/>
                         :
-                        <FormRegister/>
+                        <FormRegister setMessage={setMessage} visibleModal={setShowModal}/>
                     }
                 </div>
                 <div className='image'>
