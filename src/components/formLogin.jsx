@@ -40,6 +40,7 @@ function FormLogin({setMessage,visibleModal}) {
                         {...register("email", { required: true })}
                         className="input"
                         placeholder="Correo"
+                        required={true}
                     />
                 </div>
                 <div className="input-container">
@@ -49,6 +50,7 @@ function FormLogin({setMessage,visibleModal}) {
                         {...register("password", { required: true })}
                         className="input"
                         placeholder="Contraseña"
+                        required={true}
                     />
                 </div>
                 <div className="contentbutton">

@@ -43,6 +43,7 @@ function FormRegister({setMessage,visibleModal}) {
                         {...register("username", { required: true })}
                         className="input"
                         placeholder="Nombre"
+                        required={true}
                     />
                 </div>
                 <div className="input-container">
@@ -52,6 +53,7 @@ function FormRegister({setMessage,visibleModal}) {
                         {...register("phone", { required: true })}
                         className="input"
                         placeholder="Teléfono"
+                        required={true}
                     />
                 </div>
                 <div className="input-container">
@@ -61,6 +63,7 @@ function FormRegister({setMessage,visibleModal}) {
                         {...register("email", { required: true })}
                         className="input"
                         placeholder="Correo"
+                        required={true}
                     />
                 </div>
                 <div className="input-container">
@@ -71,6 +74,7 @@ function FormRegister({setMessage,visibleModal}) {
                         className="input"
                         placeholder="Contraseña"
                         minLength={6}
+                        required={true}
                     />
                 </div>
                 <div className="contentbutton">

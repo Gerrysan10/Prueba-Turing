@@ -8,7 +8,13 @@ import logoGmail from '../assets/gmail.png'
 import logoFacebook from '../assets/facebook.png'
 import logoInstagram from '../assets/instagram.png'
 import logoLogout from '../assets/cerrar-sesion.png'
-import { getSports, getNotices, getRankings, deleteNotice, updateNotice } from '../apis/sports';
+import imgEdit from '../assets/edit.png'
+import imgDelete from '../assets/trash.png'
+import { getSports, getNotices, getRankings, deleteNotice } from '../apis/sports';
+import { useNavigate } from 'react-router-dom';
+import ModalDelete from '../components/modalDelete';
+import UpdateNotice from '../components/updateNotices';
+import CreateNotice from '../components/createNotice';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -16,7 +22,13 @@ function App() {
   const [sports, setSports] = useState([]);
   const [notices, setNotices] = useState([]);
   const [rankings, setRankings] = useState([]);
-  const [nameUser, setUserName] = useState('')
+  const [nameUser, setUserName] = useState('');
+  const [roleUser, setRoleuser] = useState('');
+  const [showModalDelete, setShowModalDelete] = useState(false);
+  const [showModalUpdate, setShowModalUpdate] = useState(false);
+  const [showModalCreate, setShowModalCreate] = useState(false);
+  const [noticeSelect, setNoticeSelect] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Función para cargar datos
@@ -24,7 +36,8 @@ function App() {
       try {
         const storedUser = localStorage.getItem('userSession');
         const userName = storedUser ? JSON.parse(storedUser).username : null;
-        console.log('estos son los datos:',storedUser)
+        const roleUser = storedUser ? JSON.parse(storedUser).role : null;
+        setRoleuser(roleUser);
         setUserName(userName);
         // Obtener datos de deportes
         const sportsData = await getSports();
@@ -55,7 +68,44 @@ function App() {
 
   const handleCollectionClick = (index) => {
     setCurrentIndex(index * 3);
+
   };
+
+  const logout = () => {
+    // Eliminar la sesión del localStorage
+    localStorage.removeItem('userSession');
+    navigate('/');
+  };
+
+  const openDelete = (notice) => {
+    console.log('idnotice', notice)
+    setNoticeSelect(notice);
+    setShowModalDelete(true);
+  }
+  const openUpdate = (notice) => {
+    console.log('idnotice', notice)
+    setNoticeSelect(notice);
+    setShowModalUpdate(true);
+  }
+
+
+  const handleDelete = async () => {
+    try {
+      //llamada a la api delete notice
+      const response = await deleteNotice(noticeSelect._id);
+      console.log('response', response)
+      if (response && response.message == 'Noticia eliminada con éxito') {
+        // Eliminar la noticia del estado
+        setNotices(notices.filter((notice) => notice._id !== noticeSelect._id));
+
+      }
+    } catch (error) {
+      console.error("Error al intentar eliminar la noticia:", error.message);
+    } finally {
+      setShowModalDelete(false);
+    }
+  };
+
 
   return (
     <div className="container">
@@ -71,12 +121,12 @@ function App() {
             <a href="#Noticias">Noticias</a>
             <a href="#Estadisticas">Estadisticas</a>
             <a href="#Contacto">contacto</a>
-            <a className='a-logout'>Cerrar sesión</a>
+            <a onClick={logout} className='a-logout'>Cerrar sesión</a>
             <img
               src={logoLogout}
               alt="Cerrar sesión"
               className="logout-icon"
-              onClick={() => { }}
+              onClick={logout}
             />
           </div>
         </nav>
@@ -127,19 +177,36 @@ function App() {
 
           <div className="notices" id='Noticias'>
             <h2>Noticias relevantes</h2>
-            {notices.map((noticia, index) => (
-              <div key={index} className="card-notice">
-                <img className="img-notice" src={noticia.linkImage} alt={noticia.title} />
-                <div className="description-notice">
-                  <h3>{noticia.title}</h3>
-                  <p>{noticia.description}</p>
-                  <a href={noticia.linkNotice} target="_blank" rel="noopener noreferrer">
-                    Leer más
-                  </a>
+            {notices
+              .slice(-4) // Obtiene las últimas 4 noticias
+              .map((noticia, index) => (
+                <div key={index} className="card-notice">
+                  <img className="img-notice" src={noticia.linkImage} alt={noticia.title} />
+                  <div className="description-notice">
+                    <h3>{noticia.title}</h3>
+                    <p>{noticia.description}</p>
+                    <a href={noticia.linkNotice} target="_blank" rel="noopener noreferrer">
+                      Leer más
+                    </a>
+                    <img
+                      className="icon-actions"
+                      src={imgEdit}
+                      onClick={() => openUpdate(noticia)}
+                      alt="Editar"
+                    />
+                    <img
+                      className="icon-actions"
+                      src={imgDelete}
+                      onClick={() => openDelete(noticia)}
+                      alt="Eliminar"
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+
+            <button className='AddButton' onClick={() => { setShowModalCreate(true) }}>Agregar noticia</button>
           </div>
+
         </section>
 
         <section className="feature-section">
@@ -209,6 +276,24 @@ function App() {
           </div>
         </div>
       </aside>
+      <ModalDelete
+        showModal={showModalDelete}
+        setShowModal={setShowModalDelete}
+        message={'¿Estás seguro de eliminar la noticia?'}
+        handleDelete={() => handleDelete(noticeSelect)}
+      />
+      <UpdateNotice
+        visibleModal={showModalUpdate}
+        setVisibleModal={setShowModalUpdate}
+        dataNotice={noticeSelect}
+        notices={notices}
+        setnotices={setNotices}
+      />
+      <CreateNotice visibleModal={showModalCreate}
+        setVisibleModal={setShowModalCreate}
+        notices={notices}
+        setnotices={setNotices} />
+
     </div>
   );
 }

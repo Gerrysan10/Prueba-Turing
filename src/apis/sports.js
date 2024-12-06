@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000"; 
+const API_URL = "http://localhost:4000";
 
 
 
@@ -19,6 +19,28 @@ export const getRankings = async () => {
     return response.json();
 };
 
+// Función para agregar una noticia
+export const addNotices = async (data) => {
+    try {
+        const response = await fetch(`${API_URL}/api/notices`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message);
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error("Error al registrar el usuario:", error);
+        throw error;
+    }
+};
 
 // Función para obtener todas las noticias
 export const getNotices = async () => {

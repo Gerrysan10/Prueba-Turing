@@ -53,3 +53,27 @@
     color: black;
     text-decoration: none;
 }
+.btns-Modal{
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    align-self: center;
+}
+.btnsModal{
+    width: 45%;
+    border-radius: 10px;
+    padding: 7px 0px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); 
+    border: none;
+    transition: all 0.3s ease; 
+    font-weight: bold;
+    
+}
+.btnModalDelete{
+        background-color: #ed6565; 
+}
+.btnModalExit{
+    background-color: #828e8a;
+}
