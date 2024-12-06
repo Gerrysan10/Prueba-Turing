@@ -1,0 +1,55 @@
+.modal-login {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw; 
+    height: 100vh; 
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content-login {
+    background-color: white;
+    margin: auto; 
+    border: 1px solid #888;
+    width: 70vw; 
+    max-width: 350px; 
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding-bottom: 15px;
+}
+
+.cont-title-modal-login {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    height: 40px;
+    background-color: #6ABDA6;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 0 10px;
+}
+
+.title-modal-login {
+    flex: 1; 
+}
+.message-modal-login{
+    padding: 0 10px;
+    text-align: center;
+}
+.close-login {
+    color: #242424;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-login:hover,
+.close-login:focus {
+    color: black;
+    text-decoration: none;
+}

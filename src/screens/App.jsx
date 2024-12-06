@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import logo from './assets/logo.png';
-import flecha from './assets/flecha.png'
-import imgDeports from './assets/imgDeports.avif'
-import deportistas from './assets/deportistas.png'
-import logoGmail from './assets/gmail.png'
-import logoFacebook from './assets/facebook.png'
-import logoInstagram from './assets/instagram.png'
-import logoLogout from './assets/cerrar-sesion.png'
-import { getSports, getNotices, getRankings, deleteNotice, updateNotice } from './apis/sports';
+import '../css/App.css';
+import logo from '../assets/logo.png';
+import flecha from '../assets/flecha.png'
+import imgDeports from '../assets/imgDeports.avif'
+import deportistas from '../assets/deportistas.png'
+import logoGmail from '../assets/gmail.png'
+import logoFacebook from '../assets/facebook.png'
+import logoInstagram from '../assets/instagram.png'
+import logoLogout from '../assets/cerrar-sesion.png'
+import { getSports, getNotices, getRankings, deleteNotice, updateNotice } from '../apis/sports';
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);

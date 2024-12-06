@@ -1,0 +1,182 @@
+body{
+    margin: 0;
+    font-family:  Arial, Helvetica, sans-serif;
+}
+.ContRegister {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh; 
+    overflow: hidden; 
+}
+.contentr {
+    width: 50%; 
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.options{
+    display: flex;
+    gap: 30px;
+    margin-bottom: 2rem;
+    font-size: 20px;
+}
+.options p{
+    width: 150px;
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+}
+.select{
+    text-decoration: underline;
+    color: #07978b;
+}
+.return{
+    width: 40px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.formulary {
+    display: flex;
+    flex-direction: column;
+    padding: 0vh 10%;
+    width: 80%;
+}
+.logor {
+    width: 180px;
+    height: auto;
+    align-self: center;
+}
+.titleformulary {
+    font-size: 25px;
+}
+.input-container {
+    display: flex;
+    height: 55px;
+    background-color: #e8e7e7;
+    margin-bottom: 4%;
+}
+.logos {
+    width: 5%;
+    height: 40%;
+    align-self: center;
+    object-fit: contain;
+}
+.input {
+    width: 90%;
+    border: 0;
+    background-color: #e8e7e7;
+    flex: 1;
+    padding: 0px 10px;
+}
+.contentbutton {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.button {
+    width: 40%;
+    height: 50px;
+    background-color: #6ABDA6;
+    border-radius: 40px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 0;
+}
+.textbutton {
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #FCFCFC;
+}
+.image {
+    width: 50%; 
+    overflow: hidden;
+    
+}
+.imgregister {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+.recoverypass{
+    margin-top: 150px;
+    font-size: 20px;
+  }
+
+.subtitle{
+    font-size: 20px;
+}
+
+@media (max-width: 700px ) {
+    .image{
+        display: none;
+    }
+    .contentr{
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .options{
+        font-size: 18px;
+    }
+    .options p{
+        width: 120px;
+
+    }
+    .titleformulary{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 450px) {
+    .options{
+        font-size: 16px;
+    }
+    .formulary {
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    
+    }
+    .titleformulary{
+        width: 90%;
+    }
+    .logor {
+        width: 50%;
+        height: auto;
+        align-self: center;
+    }
+   
+    .inputs{
+        width: 90%;
+    }
+    .input{
+        padding: 5;
+    }
+    .logos{
+        width: 10%;
+    }
+    .button{
+        width: 80%;
+    }
+    .recoverypass{
+        margin-top: 80px;
+        font-size: 15px;
+      }
+    
+    .subtitle{
+        font-size: 20px;
+        text-align: center;
+    }
+
+
+}
